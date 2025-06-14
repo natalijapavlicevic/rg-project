@@ -26,6 +26,7 @@
 [ ] Parallax Mapping
 
 ### Group B:
+
 [ ] Bloom with the use of HDR  
 [ ] Deferred Shading  
 [ ] Point Shadows  
@@ -37,7 +38,7 @@
 
 ## Models:
 
-[link1]   
+https://www.cgtrader.com/items/2644859/download-page
 [link2]
 
 ## Textures

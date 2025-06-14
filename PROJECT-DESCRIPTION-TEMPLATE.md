@@ -26,6 +26,7 @@
 [ ] Parallax Mapping
 
 ### Group B:
+
 [ ] Bloom with the use of HDR  
 [ ] Deferred Shading  
 [ ] Point Shadows  
@@ -37,7 +38,7 @@
 
 ## Models:
 
-[link1]   
+https://sketchfab.com/3d-models/sky-dome-demo-a5778d3c90e644e2be1062895ccd44aa
 [link2]
 
 ## Textures

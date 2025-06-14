@@ -1,21 +1,22 @@
 # {NAME-OF-THE-PROJECT}
 
-{INDEX} - {STUDENT-FULL-NAME}  
+mi22068 - Natalija Pavlićević  
 {PROJECT DESCRIPTION}
 
 ## Controls
 
-{BUTTON1} -> {ACTION1}  
-{BUTTON2} -> {ACTION2}  
-...  
-{BUTTONN} -> {ACTIONN}
+W → Move forward  
+A → Move left  
+S → Move backwards  
+D → Move right  
+{BUTTONN} → {ACTIONN}
 
 ## Features
 
 ### Fundamental:
 
-[ ] Model with lighting
-[ ] Two types of lighting with customizable colors and movement through GUI or ACTIONS
+[ ] Model with lighting  
+[ ] Two types of lighting with customizable colors and movement through GUI or ACTIONS  
 [ ] {ACTION_X} --- AFTER_M_SECONDS---Triggers---> {EVENT_A} ---> AFTER_N_SECONDS---Triggers---> {EVENT_B}
 
 ### Group A:
@@ -38,7 +39,7 @@
 
 ## Models:
 
-https://www.cgtrader.com/items/2644859/download-page
+https://www.cgtrader.com/items/2644859/download-page  
 [link2]
 
 ## Textures

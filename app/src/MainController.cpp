@@ -43,6 +43,40 @@ bool MainController::loop() {
     return true;
 }
 
+void MainController::draw_sun() {
+    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("sun");
+    auto sun = engine::core::Controller::get<engine::resources::ResourcesController>()->model("sun");
+
+    shader->use();
+    shader->set_vec3("objectColor", glm::vec3(1.0f, 1.0f, 0.0f));
+    shader->set_vec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+    shader->set_mat4("projection", graphics->projection_matrix());
+    shader->set_mat4("view", graphics->camera()
+                                     ->view_matrix());
+    glm::mat4 model_sun = glm::mat4(1.0f);
+    model_sun = glm::translate(model_sun, glm::vec3(0.0f, -0.0f, 3.0f));
+    model_sun = glm::scale(model_sun, glm::vec3(0.3f));
+    shader->set_mat4("model", model_sun);
+
+
+    sun->draw(shader);
+}
+
+void MainController::draw_bench() {
+    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("bench");
+    auto bench = engine::core::Controller::get<engine::resources::ResourcesController>()->model("bench");
+    shader->use();
+    shader->set_mat4("projection", graphics->projection_matrix());
+    shader->set_mat4("view", graphics->camera()
+                                     ->view_matrix());
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
+    model = glm::scale(model, glm::vec3(0.3f));
+    shader->set_mat4("model", model);
+    bench->draw(shader);
+}
 
 void MainController::begin_draw() {
     engine::graphics::OpenGL::clear_buffers();
@@ -50,14 +84,21 @@ void MainController::begin_draw() {
 
 void MainController::draw_skybox() {
     auto resources = engine::core::Controller::get<engine::resources::ResourcesController>();
-    auto skybox = resources->skybox("nature_skybox");
+    auto skybox = resources->skybox("basic_skybox");
     auto shader = resources->shader("skybox");
     auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
+    auto camera = graphics->camera();
+    // glm::mat4 view = glm::mat4(glm::mat3(camera->view_matrix()));
+    // shader->set_mat4("view", view);
+    // shader->set_mat4("projection", graphics->projection_matrix());
+
     graphics->draw_skybox(shader, skybox);
 }
 
 void MainController::draw() {
-    draw_skybox();
+    draw_bench();
+    draw_sun();
+    // draw_skybox();
 }
 
 void MainController::end_draw() {

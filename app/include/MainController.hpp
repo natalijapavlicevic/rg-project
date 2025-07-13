@@ -19,8 +19,8 @@ public:
     }
 
 private:
-    // void draw_skybox();
-    void draw_backpack();
+    void draw_bench();
+    void draw_sun();
     void begin_draw() override;
     void draw_skybox();
     void draw() override;

@@ -39,12 +39,14 @@ D → Move right
 
 ## Models:
 
-https://www.cgtrader.com/items/2644859/download-page  
-[link2]
+https://sketchfab.com/3d-models/bench-48e8f27984694d3e8bbf536320d23728
+https://sketchfab.com/3d-models/the-sun-8f31ed4194e34f91bdacbd85dfc5fb39
 
-## Textures
+## Textures:
 
 [link1]  
 [link2]
 
-{OTHER-RESOURCES}
+## Skybox:
+
+https://www.google.com/search?q=blue+1%3A1&udm=2&sxsrf=AE3TifPxXK03cUKxswoLYt_jQ2cNJXGiLQ%3A1750089276111#vhid=CI89n52v0KN5HM&vssid=mosaic

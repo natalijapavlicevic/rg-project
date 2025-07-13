@@ -1,6 +1,12 @@
 {
   "resources": {
     "models": {
+      "bench": {
+        "path": "bench/bench.obj"
+      },
+      "sun": {
+        "path": "sun/scene.obj"
+      }
     }
   },
   "window": {

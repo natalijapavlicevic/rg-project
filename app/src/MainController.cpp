@@ -2,7 +2,7 @@
 // Created by natalija on 3/1/25.
 //
 
-#include "../include/MainController.hpp"
+#include "MainController.hpp"
 
 #include "GUIController.hpp"
 #include "engine/graphics/OpenGL.hpp"

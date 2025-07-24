@@ -2,7 +2,7 @@
 // Created by natalija on 6/14/25.
 //
 
-#include "../include/GUIController.hpp"
+#include "GUIController.hpp"
 
 #include "engine/graphics/GraphicsController.hpp"
 #include "engine/platform/PlatformController.hpp"

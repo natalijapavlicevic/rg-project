@@ -10,17 +10,17 @@ A → Move left
 S → Move backwards  
 D → Move right
 
-R -> Change color of light to red
-G -> Change color of light to green
-B -> Change color of light to blue
-SPACE -> Change color of light to white (default)
+R → Change color of light to red
+G → Change color of light to green
+B → Change color of light to blue
+SPACE → Change color of light to white (default)
 
 ## Features
 
 ### Fundamental:
 
 [ ] Model with lighting  
-[ ] Two types of lighting with customizable colors and movement through GUI or ACTIONS  
+[x] Two types of lighting with customizable colors and movement through GUI or ACTIONS  
 [ ] {ACTION_X} --- AFTER_M_SECONDS---Triggers---> {EVENT_A} ---> AFTER_N_SECONDS---Triggers---> {EVENT_B}
 
 ### Group A:

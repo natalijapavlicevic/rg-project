@@ -8,8 +8,12 @@ mi22068 - Natalija Pavlićević
 W → Move forward  
 A → Move left  
 S → Move backwards  
-D → Move right  
-{BUTTONN} → {ACTIONN}
+D → Move right
+
+R -> Change color of light to red
+G -> Change color of light to green
+B -> Change color of light to blue
+SPACE -> Change color of light to white (default)
 
 ## Features
 

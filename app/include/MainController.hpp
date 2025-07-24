@@ -4,6 +4,7 @@
 
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
+#include <engine/core/Engine.hpp>
 #include <engine/core/Controller.hpp>
 
 namespace app {
@@ -19,6 +20,8 @@ public:
     }
 
 private:
+    glm::vec3 light_color = glm::vec3(1.0f);
+    void poll_events() override;
     void draw_bench();
     void draw_sun();
     void set_lamp();

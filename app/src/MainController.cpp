@@ -88,6 +88,22 @@ void MainController::set_lamp() {
 }
 
 
+void MainController::poll_events() {
+    auto platform = engine::core::Controller::get<engine::platform::PlatformController>();
+    if (platform->key(engine::platform::KEY_R).state() == engine::platform::Key::State::JustPressed) {
+        light_color = glm::vec3(1.0f, 0.0f, 0.0f);
+    }
+    if (platform->key(engine::platform::KEY_G).state() == engine::platform::Key::State::JustPressed) {
+        light_color = glm::vec3(0.0f, 1.0f, 0.0f);
+    }
+    if (platform->key(engine::platform::KEY_B).state() == engine::platform::Key::State::JustPressed) {
+        light_color = glm::vec3(0.0f, 0.0f, 1.0f);
+    }
+    if (platform->key(engine::platform::KEY_SPACE).state() == engine::platform::Key::State::JustPressed) {
+        light_color = glm::vec3(1.0f);
+    }
+}
+
 void MainController::draw_bench() {
     auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
     auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("bench");
@@ -114,6 +130,7 @@ void MainController::draw_bench() {
     shader->set_float("light.constant", 1.0f);
     shader->set_float("light.linear", 0.09f);
     shader->set_float("light.quadratic", 0.032f);
+    shader->set_vec3("lightColor", light_color);
 
     shader->set_vec3("viewPos", camera->Position);
 

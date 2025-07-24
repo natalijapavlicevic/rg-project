@@ -22,42 +22,6 @@ void main()
 }
 
 //#shader fragment
-//#version 330 core
-//
-//out vec4 FragColor;
-//
-//in vec2 TexCoords;
-//
-//struct Material {
-//    sampler2D diffuse;
-//    sampler2D specular;
-//    float shininess;
-//};
-//
-//struct Light {
-//    vec3 position;
-//    vec3 direction;
-//    float cutOff;
-//    float outerCutOff;
-//
-//    vec3 ambient;
-//    vec3 diffuse;
-//    vec3 specular;
-//
-//    float constant;
-//    float linear;
-//    float quadratic;
-//};
-//
-//uniform sampler2D texture_diffuse1;
-//uniform Material material;
-//uniform Light light;
-//
-//void main() {
-//    FragColor = vec4(texture(texture_diffuse1, TexCoords).rgb, 1.0);
-//}
-
-
 #version 330 core
 out vec4 FragColor;
 
@@ -89,6 +53,7 @@ struct Light {
 uniform vec3 viewPos;
 uniform Material material;
 uniform Light light;
+uniform vec3 lightColor;
 
 void main()
 {
@@ -116,6 +81,6 @@ void main()
     diffuse *= attenuation;
     specular *= attenuation;
 
-    vec3 result = ambient + diffuse + specular;
+    vec3 result = (ambient + diffuse + specular) * lightColor;
     FragColor = vec4(result, 1.0);
 }

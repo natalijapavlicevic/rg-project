@@ -21,6 +21,7 @@ public:
 private:
     void draw_bench();
     void draw_sun();
+    void set_lamp();
     void begin_draw() override;
     void draw_skybox();
     void draw() override;

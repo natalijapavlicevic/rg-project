@@ -23,6 +23,7 @@ private:
     glm::vec3 light_color = glm::vec3(1.0f);
     void poll_events() override;
     void draw_bench();
+    void draw_grass();
     void draw_sun();
     void set_lamp();
     void begin_draw() override;

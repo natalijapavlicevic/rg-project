@@ -5,6 +5,7 @@
 #include "MainController.hpp"
 
 #include "GUIController.hpp"
+#include "engine/graphics/Camera.hpp"
 #include "engine/graphics/OpenGL.hpp"
 #include "spdlog/spdlog.h"
 
@@ -114,22 +115,26 @@ void MainController::draw_bench() {
     shader->set_mat4("view", graphics->camera()
                                      ->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));
-    model = glm::scale(model, glm::vec3(0.3f));
+    model = glm::translate(model, glm::vec3(0.0f, 1.0f, 3.0f));
+    model = glm::scale(model, glm::vec3(1.0f));
     shader->set_mat4("model", model);
 
     shader->set_vec3("light.position", camera->Position);
     shader->set_vec3("light.direction", camera->Front);
     shader->set_float("light.cutOff", glm::cos(glm::radians(12.5f)));
     shader->set_float("light.outerCutOff", glm::cos(glm::radians(17.5f)));
+    shader->set_vec3("spotlight.position", camera->Position);
+    shader->set_vec3("spotlight.direction", camera->Front);
+    shader->set_float("spotlight.cutOff", glm::cos(glm::radians(12.5f)));
+    shader->set_float("spotlight.outerCutOff", glm::cos(glm::radians(17.5f)));
 
-    shader->set_vec3("light.ambient", glm::vec3(0.1f));
-    shader->set_vec3("light.diffuse", glm::vec3(0.8f));
-    shader->set_vec3("light.specular", glm::vec3(1.0f));
+    shader->set_vec3("spotlight.ambient", glm::vec3(0.2f));
+    shader->set_vec3("spotlight.diffuse", glm::vec3(0.8f));
+    shader->set_vec3("spotlight.specular", glm::vec3(1.0f));
 
-    shader->set_float("light.constant", 1.0f);
-    shader->set_float("light.linear", 0.09f);
-    shader->set_float("light.quadratic", 0.032f);
+    shader->set_float("spotlight.constant", 1.0f);
+    shader->set_float("spotlight.linear", 0.05f);
+    shader->set_float("spotlight.quadratic", 0.01f);
     shader->set_vec3("lightColor", light_color);
 
     shader->set_vec3("viewPos", camera->Position);
@@ -140,6 +145,45 @@ void MainController::draw_bench() {
 
 
     bench->draw(shader);
+}
+
+void MainController::draw_grass() {
+    auto grass = engine::core::Controller::get<engine::resources::ResourcesController>()->model("grass");
+    // add_spotlight_uniforms("grass");
+    // auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("grass");
+    // grass->draw(shader);
+    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("grass");
+    auto camera = graphics->camera();
+    shader->use();
+    shader->set_mat4("projection", graphics->projection_matrix());
+    shader->set_mat4("view", camera
+                                     ->view_matrix());
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 3.0f));
+    model = glm::scale(model, glm::vec3(0.03f));
+    shader->set_mat4("model", model);
+
+    shader->set_vec3("spotlight.position", camera->Position);
+    shader->set_vec3("spotlight.direction", camera->Front);
+    shader->set_float("spotlight.cutOff", glm::cos(glm::radians(12.5f)));
+    shader->set_float("spotlight.outerCutOff", glm::cos(glm::radians(17.5f)));
+
+    shader->set_vec3("spotlight.ambient", glm::vec3(0.1f));
+    shader->set_vec3("spotlight.diffuse", glm::vec3(0.8f));
+    shader->set_vec3("spotlight.specular", glm::vec3(1.0f));
+
+    shader->set_float("spotlight.constant", 1.0f);
+    shader->set_float("spotlight.linear", 0.05f);
+    shader->set_float("spotlight.quadratic", 0.01f);
+    shader->set_vec3("lightColor", light_color);
+    shader->set_vec3("viewPos", camera->Position);
+    shader->set_int("material.diffuse", 0);
+    shader->set_int("material.specular", 1);
+    shader->set_float("material.shininess", 32.0f);
+
+
+    grass->draw(shader);
 }
 
 void MainController::begin_draw() {
@@ -162,7 +206,9 @@ void MainController::draw_skybox() {
 void MainController::draw() {
     set_lamp();
     draw_bench();
-    draw_sun();
+    draw_grass();
+    // add_directional_light();
+    // draw_sun();
     // draw_skybox();
 }
 

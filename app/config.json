@@ -6,6 +6,9 @@
       },
       "sun": {
         "path": "sun/scene.obj"
+      },
+      "grass": {
+        "path": "grass/patch_of_grass.obj"
       }
     }
   },

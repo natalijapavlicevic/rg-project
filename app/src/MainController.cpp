@@ -72,8 +72,8 @@ void MainController::draw_bench() {
     shader->set_mat4("view", graphics->camera()
                                      ->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 1.0f, 3.0f));
-    model = glm::scale(model, glm::vec3(0.8f));
+    model = glm::translate(model, glm::vec3(0.0f, 0.5f, 3.0f));
+    model = glm::scale(model, glm::vec3(1.1f));
     shader->set_mat4("model", model);
 
     shader->set_vec3("spotlight.position", camera->Position);
@@ -96,7 +96,6 @@ void MainController::draw_bench() {
     shader->set_int("material.specular", 1);
     shader->set_float("material.shininess", 32.0f);
 
-    // set_pointlight(shader);
     shader->set_vec3("dirlight.direction", camera->Front);
     shader->set_vec3("dirlight.ambient", glm::vec3(0.1f));
     shader->set_vec3("dirlight.diffuse", glm::vec3(0.3f));
@@ -137,7 +136,6 @@ void MainController::draw_grass() {
     shader->set_int("material.specular", 1);
     shader->set_float("material.shininess", 32.0f);
 
-    // set_pointlight(shader);
     shader->set_vec3("dirlight.direction", camera->Front);
     shader->set_vec3("dirlight.ambient", glm::vec3(0.1f));
     shader->set_vec3("dirlight.diffuse", glm::vec3(0.3f));
@@ -154,8 +152,51 @@ void MainController::draw_skybox() {
     glClearColor(0.02f, 0.05f, 0.1f, 1.0f);
 }
 
+void MainController::draw_tree() {
+    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("bench");
+    auto camera = graphics->camera();
+    auto tree = engine::core::Controller::get<engine::resources::ResourcesController>()->model("tree");
+    shader->use();
+    shader->set_mat4("projection", graphics->projection_matrix());
+    shader->set_mat4("view", graphics->camera()
+                                     ->view_matrix());
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(2.0f, 0.0f, 1.0f));
+    model = glm::scale(model, glm::vec3(0.02f));
+    shader->set_mat4("model", model);
+
+    shader->set_vec3("spotlight.position", camera->Position);
+    shader->set_vec3("spotlight.direction", camera->Front);
+    shader->set_float("spotlight.cutOff", glm::cos(glm::radians(12.5f)));
+    shader->set_float("spotlight.outerCutOff", glm::cos(glm::radians(17.5f)));
+
+    shader->set_vec3("spotlight.ambient", glm::vec3(0.2f));
+    shader->set_vec3("spotlight.diffuse", light_color * 1.2f);
+    shader->set_vec3("spotlight.specular", light_color);
+
+    shader->set_float("spotlight.constant", 1.0f);
+    shader->set_float("spotlight.linear", 0.05f);
+    shader->set_float("spotlight.quadratic", 0.01f);
+    shader->set_vec3("lightColor", light_color);
+
+    shader->set_vec3("viewPos", camera->Position);
+
+    shader->set_int("material.diffuse", 0);
+    shader->set_int("material.specular", 1);
+    shader->set_float("material.shininess", 32.0f);
+
+    shader->set_vec3("dirlight.direction", camera->Front);
+    shader->set_vec3("dirlight.ambient", glm::vec3(0.1f));
+    shader->set_vec3("dirlight.diffuse", glm::vec3(0.3f));
+    shader->set_vec3("dirlight.specular", glm::vec3(0.2f));
+
+    tree->draw(shader);
+}
+
 void MainController::draw() {
     draw_bench();
+    draw_tree();
     draw_grass();
     draw_skybox();
 }

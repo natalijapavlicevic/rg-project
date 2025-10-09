@@ -4,11 +4,11 @@
       "bench": {
         "path": "bench/bench.obj"
       },
-      "sun": {
-        "path": "sun/scene.obj"
-      },
       "grass": {
         "path": "grass/patch_of_grass.obj"
+      },
+      "tree": {
+        "path": "tree/source/acacia/acacia.obj"
       }
     }
   },

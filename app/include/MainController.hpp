@@ -22,12 +22,17 @@ public:
 private:
     glm::vec3 light_color = glm::vec3(1.0f);
     void poll_events() override;
+
+    void begin_draw() override;
+
     void draw_bench();
     void draw_grass();
-    void begin_draw() override;
     void draw_skybox();
+    void draw_tree();
+
     void draw() override;
     void end_draw() override;
+
     void update_camera();
     void update() override;
 };

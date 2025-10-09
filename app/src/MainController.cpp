@@ -221,18 +221,18 @@ void MainController::draw_cat() {
     shader->set_float("spotlight.constant", 1.0f);
     shader->set_float("spotlight.linear", 0.05f);
     shader->set_float("spotlight.quadratic", 0.01f);
-    shader->set_vec3("lightColor", light_color);
+    shader->set_vec3("lightColor", glm::vec3(0.0f));
 
     shader->set_vec3("viewPos", camera->Position);
 
     shader->set_int("material.diffuse", 0);
-    shader->set_int("material.specular", 1);
-    shader->set_float("material.shininess", 32.0f);
+    shader->set_int("material.specular", 0);
+    shader->set_float("material.shininess", 5.0f);
 
     shader->set_vec3("dirlight.direction", camera->Front);
-    shader->set_vec3("dirlight.ambient", glm::vec3(0.1f));
+    shader->set_vec3("dirlight.ambient", glm::vec3(0.3f));
     shader->set_vec3("dirlight.diffuse", glm::vec3(0.3f));
-    shader->set_vec3("dirlight.specular", glm::vec3(0.2f));
+    shader->set_vec3("dirlight.specular", glm::vec3(0.0f));
 
     cat->draw(shader);
 }

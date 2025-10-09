@@ -35,6 +35,17 @@ void MainController::initialize() {
     auto platform = engine::core::Controller::get<engine::platform::PlatformController>();
     platform->register_platform_event_observer(std::make_unique<MainPlatformEventObserver>());
     engine::graphics::OpenGL::enable_depth_testing();
+
+    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
+    auto camera = graphics->camera();
+
+    camera->Position = glm::vec3(-3.0f, 2.0f, 3.0f);
+    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.5f, 3.2f);
+    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+    camera->Front = glm::normalize(cameraTarget - camera->Position);
+    camera->Right = glm::normalize(glm::cross(camera->Front, cameraUp));
+    camera->Up = glm::cross(camera->Right, camera->Front);
 }
 
 bool MainController::loop() {

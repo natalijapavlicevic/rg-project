@@ -45,50 +45,6 @@ bool MainController::loop() {
     return true;
 }
 
-void MainController::draw_sun() {
-    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("sun");
-    auto sun = engine::core::Controller::get<engine::resources::ResourcesController>()->model("sun");
-
-    shader->use();
-    shader->set_vec3("objectColor", glm::vec3(1.0f, 1.0f, 0.0f));
-    shader->set_vec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-    shader->set_mat4("projection", graphics->projection_matrix());
-    shader->set_mat4("view", graphics->camera()
-                                     ->view_matrix());
-    glm::mat4 model_sun = glm::mat4(1.0f);
-    model_sun = glm::translate(model_sun, glm::vec3(0.0f, -0.0f, 3.0f));
-    model_sun = glm::scale(model_sun, glm::vec3(0.3f));
-    shader->set_mat4("model", model_sun);
-
-
-    sun->draw(shader);
-}
-
-void MainController::set_lamp() {
-    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("lamp");
-    auto camera = graphics->camera();
-
-    shader->use();
-    shader->set_int("material.diffuse", 0);
-    shader->set_int("material.specular", 1);
-    shader->set_vec3("light.position", camera->Position);
-    shader->set_vec3("light.direction", camera->Front);
-    shader->set_float("light.cutOff", glm::cos(glm::radians(12.5f)));
-    shader->set_float("light.outerCutOff", glm::cos(glm::radians(15.0f)));
-    shader->set_vec3("viewPos", camera->Position);
-    //
-    shader->set_vec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-    shader->set_vec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
-    shader->set_vec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-    shader->set_float("light.constant", 1.0f);
-    shader->set_float("light.linear", 0.09f);
-    shader->set_float("light.quadratic", 0.032f);
-    //
-    shader->set_float("material.shininess", 32.0f);
-}
-
 
 void MainController::poll_events() {
     auto platform = engine::core::Controller::get<engine::platform::PlatformController>();
@@ -199,7 +155,6 @@ void MainController::draw_skybox() {
 }
 
 void MainController::draw() {
-    // set_lamp();
     draw_bench();
     draw_grass();
     draw_skybox();

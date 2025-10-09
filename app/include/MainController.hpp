@@ -4,8 +4,8 @@
 
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
-#include <engine/core/Engine.hpp>
 #include <engine/core/Controller.hpp>
+#include <engine/core/Engine.hpp>
 
 namespace app {
 
@@ -24,8 +24,6 @@ private:
     void poll_events() override;
     void draw_bench();
     void draw_grass();
-    void draw_sun();
-    void set_lamp();
     void begin_draw() override;
     void draw_skybox();
     void draw() override;

@@ -29,6 +29,7 @@ private:
     void draw_grass();
     void draw_skybox();
     void draw_tree();
+    void draw_cat();
 
     void draw() override;
     void end_draw() override;

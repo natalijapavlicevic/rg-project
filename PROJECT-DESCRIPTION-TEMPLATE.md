@@ -46,6 +46,7 @@ SPACE → Change color of light to white (default)
 https://sketchfab.com/3d-models/bench-48e8f27984694d3e8bbf536320d23728
 https://sketchfab.com/3d-models/patch-of-grass-74d524a8fb4246fe9aaac63bcd5dec58
 https://sketchfab.com/3d-models/acacia-from-tree-it-350e77196b424ebc8d28b8e7fc7b509e
+https://sketchfab.com/3d-models/cat-4bc0e9e8efd74e6d8480679ed6dfa3d2
 
 ## Textures:
 

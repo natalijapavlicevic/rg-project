@@ -9,6 +9,9 @@
       },
       "tree": {
         "path": "tree/source/acacia/acacia.obj"
+      },
+      "cat": {
+        "path": "cat/cat.obj"
       }
     }
   },

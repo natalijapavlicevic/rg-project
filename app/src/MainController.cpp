@@ -4,6 +4,7 @@
 
 #include "MainController.hpp"
 
+#include "../../engine/libs/glad/include/glad/glad.h"
 #include "GUIController.hpp"
 #include "engine/graphics/Camera.hpp"
 #include "engine/graphics/OpenGL.hpp"
@@ -191,25 +192,14 @@ void MainController::begin_draw() {
 }
 
 void MainController::draw_skybox() {
-    auto resources = engine::core::Controller::get<engine::resources::ResourcesController>();
-    auto skybox = resources->skybox("basic_skybox");
-    auto shader = resources->shader("skybox");
-    auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    // auto camera = graphics->camera();
-    // glm::mat4 view = glm::mat4(glm::mat3(camera->view_matrix()));
-    // shader->set_mat4("view", view);
-    // shader->set_mat4("projection", graphics->projection_matrix());
-
-    graphics->draw_skybox(shader, skybox);
+    glClearColor(0.02f, 0.05f, 0.1f, 1.0f);
 }
 
 void MainController::draw() {
     set_lamp();
     draw_bench();
     draw_grass();
-    // add_directional_light();
-    // draw_sun();
-    // draw_skybox();
+    draw_skybox();
 }
 
 void MainController::end_draw() {

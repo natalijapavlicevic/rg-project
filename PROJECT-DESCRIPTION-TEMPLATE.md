@@ -19,9 +19,9 @@ SPACE → Change color of light to white (default)
 
 ### Fundamental:
 
-[ ] Model with lighting  
+[x] Model with lighting  
 [x] Two types of lighting with customizable colors and movement through GUI or ACTIONS  
-[ ] {ACTION_X} --- AFTER_M_SECONDS---Triggers---> {EVENT_A} ---> AFTER_N_SECONDS---Triggers---> {EVENT_B}
+[x] {ACTION_X} --- AFTER_M_SECONDS---Triggers---> {EVENT_A} ---> AFTER_N_SECONDS---Triggers---> {EVENT_B}
 
 ### Group A:
 
@@ -53,5 +53,3 @@ https://sketchfab.com/3d-models/patch-of-grass-74d524a8fb4246fe9aaac63bcd5dec58
 [link2]
 
 ## Skybox:
-
-https://www.google.com/search?q=blue+1%3A1&udm=2&sxsrf=AE3TifPxXK03cUKxswoLYt_jQ2cNJXGiLQ%3A1750089276111#vhid=CI89n52v0KN5HM&vssid=mosaic

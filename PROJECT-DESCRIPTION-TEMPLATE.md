@@ -1,7 +1,15 @@
-# {NAME-OF-THE-PROJECT}
+# Peaceful nature scene
 
-mi22068 - Natalija Pavlićević  
-{PROJECT DESCRIPTION}
+mi22068 - Natalija Pavlićević
+
+A simple 3D outdoor scene, featuring a bench, a cat and a tree.
+
+Project demonstrates model loading, directional and spot light with an option of changing the spot light to different
+colors (red, green, blue and default white),
+as well as basic camera movements through space.
+
+This project was developed as part of the Computer Graphics course at the University of Belgrade, Faculty of
+Mathematics.
 
 ## Controls
 
@@ -10,9 +18,9 @@ A → Move left
 S → Move backwards  
 D → Move right
 
-R → Change color of light to red
-G → Change color of light to green
-B → Change color of light to blue
+R → Change color of light to red  
+G → Change color of light to green  
+B → Change color of light to blue  
 SPACE → Change color of light to white (default)
 
 ## Features

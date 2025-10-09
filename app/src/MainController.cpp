@@ -75,7 +75,7 @@ void MainController::poll_events() {
 
 void MainController::draw_bench() {
     auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("bench");
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("basic");
     auto camera = graphics->camera();
     auto bench = engine::core::Controller::get<engine::resources::ResourcesController>()->model("bench");
     shader->use();
@@ -118,7 +118,7 @@ void MainController::draw_bench() {
 void MainController::draw_grass() {
     auto grass = engine::core::Controller::get<engine::resources::ResourcesController>()->model("grass");
     auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("grass");
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("basic");
     auto camera = graphics->camera();
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
@@ -165,7 +165,7 @@ void MainController::draw_skybox() {
 
 void MainController::draw_tree() {
     auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("bench");
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("basic");
     auto camera = graphics->camera();
     auto tree = engine::core::Controller::get<engine::resources::ResourcesController>()->model("tree");
     shader->use();
@@ -207,7 +207,7 @@ void MainController::draw_tree() {
 
 void MainController::draw_cat() {
     auto graphics = engine::core::Controller::get<engine::graphics::GraphicsController>();
-    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("bench");
+    auto shader = engine::core::Controller::get<engine::resources::ResourcesController>()->shader("basic");
     auto camera = graphics->camera();
     auto cat = engine::core::Controller::get<engine::resources::ResourcesController>()->model("cat");
     shader->use();

@@ -21,7 +21,7 @@ D → Move right
 R → Change color of light to red  
 G → Change color of light to green  
 B → Change color of light to blue  
-SPACE → Change color of light to white (default)
+SPACE → Change color of light to white (default) and begin fading
 
 ## Features
 
@@ -29,7 +29,8 @@ SPACE → Change color of light to white (default)
 
 [x] Model with lighting  
 [x] Two types of lighting with customizable colors and movement through GUI or ACTIONS  
-[x] {ACTION_X} --- AFTER_M_SECONDS---Triggers---> {EVENT_A} ---> AFTER_N_SECONDS---Triggers---> {EVENT_B}
+[x] Press SPACE --- AFTER_0_SECONDS---Triggers---> Begin fade ---> AFTER_3_SECONDS---Triggers---> Fade end and cat
+disappears
 
 ### Group A:
 

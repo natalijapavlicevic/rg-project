@@ -57,6 +57,11 @@ bool MainController::loop() {
 }
 
 
+void MainController::begin_fading() {
+    fading = true;
+    fade_start = std::chrono::steady_clock::now();
+}
+
 void MainController::poll_events() {
     auto platform = engine::core::Controller::get<engine::platform::PlatformController>();
     if (platform->key(engine::platform::KEY_R).state() == engine::platform::Key::State::JustPressed) {
@@ -69,7 +74,7 @@ void MainController::poll_events() {
         light_color = glm::vec3(0.0f, 0.0f, 1.0f);
     }
     if (platform->key(engine::platform::KEY_SPACE).state() == engine::platform::Key::State::JustPressed) {
-        light_color = glm::vec3(1.0f);
+        begin_fading();
     }
 }
 
@@ -160,7 +165,7 @@ void MainController::begin_draw() {
 }
 
 void MainController::draw_skybox() {
-    glClearColor(0.02f, 0.05f, 0.1f, 1.0f);
+    engine::graphics::OpenGL::clear_color(0.02f, 0.05f, 0.1f, 1.0f);
 }
 
 void MainController::draw_tree() {
@@ -252,7 +257,8 @@ void MainController::draw() {
     draw_bench();
     draw_tree();
     draw_grass();
-    draw_cat();
+    if (!hide_cat)
+        draw_cat();
     draw_skybox();
 }
 
@@ -292,6 +298,19 @@ void MainController::update_camera() {
 
 void MainController::update() {
     update_camera();
+
+    if (fading) {
+        auto now = std::chrono::steady_clock::now();
+        float elapsed = std::chrono::duration<float>(now - fade_start).count();
+        float t = glm::clamp(elapsed / 3.0f, 0.0f, 1.0f);
+
+        light_color = glm::mix(initial_light_color, glm::vec3(0.0f), t);
+
+        if (t >= 1.0f) {
+            fading = false;
+            hide_cat = true;
+        }
+    }
 }
 
 

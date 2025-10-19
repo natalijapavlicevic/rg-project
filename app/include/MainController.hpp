@@ -21,6 +21,14 @@ public:
 
 private:
     glm::vec3 light_color = glm::vec3(1.0f);
+    glm::vec3 initial_light_color = glm::vec3(1.0f);
+    bool hide_cat = false;
+    bool fading = false;
+    float elapsed_fading_time = 0.0f;
+    std::chrono::time_point<std::chrono::steady_clock> fade_start;
+
+    void
+    begin_fading();
     void poll_events() override;
 
     void begin_draw() override;
